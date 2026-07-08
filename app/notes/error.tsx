@@ -1,11 +1,22 @@
 'use client';
+import css from './NotesPage.module.css';
 
-type Props = {
+type ErrorProps = {
   error: Error;
+  reset: () => void;
 };
 
-const Error = ({ error }: Props) => {
-  return <p>Could not fetch the list of notes. {error.message}</p>;
+const Error = ({ error, reset }: ErrorProps) => {
+  return (
+    <div>
+      <p>Could not fetch the list of notes.</p>
+      <p>{error.message}</p>
+
+      <button className={css.button} onClick={reset}>
+        Try again
+      </button>
+    </div>
+  );
 };
 
 export default Error;
